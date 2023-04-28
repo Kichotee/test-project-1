@@ -63,7 +63,6 @@ const onMouseUp = () => {
 };
 
 onMounted(() => {
-    // console.log(container.value.clientWidth, container.value.clientHeight)
    nextTick(() => {
       containerWidth.value = container.value.clientWidth;
       containerHeight.value =container.value.clientHeight;
