@@ -17,14 +17,14 @@
 <script lang='ts' setup>
 import { nextTick, ref, reactive, computed, onMounted } from "vue";
 import content from "./content.vue";
+const container = ref<HTMLElement | any>(null);
 
-// 
+
 const position = reactive({ x: 600, y: 100 });
 const mouseOffset = reactive({ x: 0, y: 0 });
 const dragElement = ref(false);
 const containerWidth = ref(0);
 const containerHeight = ref(0);
-const container = ref<HTMLElement | any>(null);
 
 
 
