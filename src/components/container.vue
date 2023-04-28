@@ -18,15 +18,15 @@
 import { nextTick, ref, reactive, computed, onMounted } from "vue";
 import content from "./content.vue";
 
-// reactive variables
+// 
 const position = reactive({ x: 600, y: 100 });
 const mouseOffset = reactive({ x: 0, y: 0 });
-const isDragging = ref(false);
+const dragElement = ref(false);
 const containerWidth = ref(0);
 const containerHeight = ref(0);
 const container = ref<HTMLElement | any>(null);
 
-// end
+
 
 const maxPosition = computed(() => {
   return {
@@ -35,9 +35,9 @@ const maxPosition = computed(() => {
   };
 });
 
-// methods
+
 const onMouseDown = (event: MouseEvent) => {
-  isDragging.value = true;
+  dragElement.value = true;
   mouseOffset.x = event.pageX - position.x;
   mouseOffset.y = event.pageY - position.y;
   window.addEventListener("mousemove", onMouseMove);
@@ -46,7 +46,7 @@ const onMouseDown = (event: MouseEvent) => {
 
 
 const onMouseMove = (event: MouseEvent) => {
-  if (isDragging.value) {
+  if (dragElement.value) {
     const newPosition = {
       x: event.pageX - mouseOffset.x,
       y: event.pageY - mouseOffset.y,
@@ -57,7 +57,7 @@ const onMouseMove = (event: MouseEvent) => {
 };
 
 const onMouseUp = () => {
-  isDragging.value = false;
+  dragElement.value = false;
   window.removeEventListener("mousemove", onMouseMove);
   window.removeEventListener("mouseup", onMouseUp);
 };
