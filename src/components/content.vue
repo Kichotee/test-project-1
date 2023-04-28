@@ -24,18 +24,18 @@ const position = reactive({ x: 0, y: 0, width: 100, height: 100 });
 const isDragging = ref(false);
 const mouseOffset = reactive({ x: 0, y: 0 });
 
-const containerWidth = computed(() => {
-  return props.containerWidth;
+const parentWidth = computed(() => {
+  return props.parentWidth;
 });
 
-const containerHeight = computed(() => {
-  return props.containerHeight;
+const parentHeight = computed(() => {
+  return props.parentHeight;
 });
 
 const maxPosition = computed(() => {
   return {
-    x: containerWidth.value - position.width,
-    y: containerHeight.value - position.height,
+    x: parentWidth.value - position.width,
+    y: parentHeight.value - position.height,
   };
 });
 
